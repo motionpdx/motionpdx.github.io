@@ -1,0 +1,21 @@
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <div class="ui inverted link list">
+            {% for my_page in site.pages %}
+              {% if my_page.title %}
+                <a class="{% if page.url == my_page.url %}active{% endif %} item" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
+              {% endif %}
+            {% endfor %}
+            <a class="item" href="http://www.meetup.com/MotionPDX/">Meetup Page</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">MotionPDX - Portland RubyMotion Meetup</h4>
+          <p>We meet on the first Wednesday of the month to discuss and learn about building mobile apps with RubyMotion.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

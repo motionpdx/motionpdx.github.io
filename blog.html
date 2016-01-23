@@ -1,0 +1,28 @@
+---
+layout: page
+title: Blog
+permalink: /blog/
+---
+<p class="rss-subscribe">Subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+<div class="ui items">
+  {% for post in site.posts %}
+  <div class="item">
+    <div class="content">
+      <a class="header" class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      <div class="meta">
+        <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+      </div>
+      <div class="description">
+        <p>{{ post.excerpt | strip_html | strip_newlines | truncate: 200 }}</p>
+      </div>
+      <div class="extra">
+        <a class="ui right floated primary button" href="{{ post.url | prepend: site.baseurl }}">
+          Read More
+          <i class="right chevron icon"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

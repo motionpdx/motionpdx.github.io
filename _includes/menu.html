@@ -1,0 +1,8 @@
+<a href="/" class="{% if page.url == "/" %}active{% endif %} item">Home</a>
+{% assign url_parts = page.url | split: '/' %}
+{% for my_page in site.pages %}
+  {% if my_page.title %}
+    {% assign my_page_url_parts = my_page.url | split: '/' %}
+    <a class="{% if url_parts[1] == my_page_url_parts[1] %}active{% endif %} item" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
+  {% endif %}
+{% endfor %}
