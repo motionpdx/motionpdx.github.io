@@ -7,12 +7,12 @@ permalink: /resources/
 Here are some resources that may help you in getting started with RubyMotion:
 
 ## Getting Help
-* Attend one of our meetups!
+* [Attend a MotionPDX meetup!](http://www.meetup.com/MotionPDX/)
 * Chat with us online in our [RubyMotion Slack channel](https://motioneers.herokuapp.com)
-* [RubyMotion Community Forums](http://community.rubymotion.com)
+* Browse the [RubyMotion Community Forums](http://community.rubymotion.com)
 
 ## Learning More
-* Read our getting started tutorial (TODO)
+* Read our [getting started with RubyMotion tutorial](/blog/2016/01/19/getting-started-with-rubymotion/)
 * [Watch a conference talk](http://www.rubymotion.com/developers/videos/#presentations)
 * [Watch a screencast](https://motioninmotion.tv)
 
