@@ -111,7 +111,7 @@ Now that we understand the basics of working with table screens, we need to talk
 
 Historically, working with remote data has been a pain for iOS developers, due to the verbose setup and method names required to achieve a seemingly simple task. Out of that pain, a library was born. AFNetworking is one of the oldest, and most popular iOS libraries. It was written in Objective-C and greatly simplifies the code required to fetch data from a remote API. Since RubyMotion allows us to use Objective-C libraries, a RubyMotion specific gem (AFMotion) was created to "wrap" AFNetworking, providing a simple DSL that feels more like Ruby.
 
-Here is an example of using AFMotion to fetch data from an API. Since we know that our API returns JSON, we can use `AFMotion::JSON` to automatically deserialze the data.
+Here is an example of using AFMotion to fetch data from an API. Since we know that our API returns JSON, we can use `AFMotion::JSON` to automatically deserialize the data.
 
 {% highlight ruby %}
 AFMotion::JSON.get("http://calagator.org/events.json") do |response|
@@ -124,6 +124,18 @@ end
 {% endhighlight %}
 
 The `response.object` will be an array of hashes that we will display on our table screen. One of the nice features about AFMotion, is that our API request will automatically be handled asynchronously. This is important so that we don't block the UI while the user waits for the request to finish.
+
+### iOS 9 App Transport Security
+
+If you tried running the example above, which connects to HTTP (not HTTPS), then you might have seen this error in the console:
+
+> App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app's Info.plist file.
+
+iOS 9 introduced a new feature which is intended to protect users from insecure data transfer. Since we are only fetching data, and not submitting data, it is okay for us to use insecure HTTP in this case. To fix this issue, we need to configure our app to allow us to connect over HTTP. Add this to your RubyMotion project configuration block (in your `Rakefile`):
+
+{% highlight ruby %}
+app.info_plist['NSAppTransportSecurity'] = {'NSAllowsArbitraryLoads' => true}
+{% endhighlight %}
 
 ## Displaying Remote Data in a Table Screen
 
