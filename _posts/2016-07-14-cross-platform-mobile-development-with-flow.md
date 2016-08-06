@@ -218,6 +218,6 @@ Now if you run the app in the simulator/emulator, you should see a list of event
 
 We've only scratched the surface of building apps with Flow.
 
-If you ran into any issues in this tutorial, feel free to post in the comments or [find us on Slack](https://motioneers.herokuapp.com). You can find a repository with this code and more additions here: https://github.com/motionpdx/calagator2
+If you ran into any issues in this tutorial, feel free to post in the comments or [find us on Slack](https://motioneers.herokuapp.com). You can find a repository with this code and more additions here: [https://github.com/motionpdx/calagator2](https://github.com/motionpdx/calagator2)
 
 Follow us for more tutorials on Flow and other RubyMotion related topics!
