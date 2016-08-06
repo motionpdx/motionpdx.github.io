@@ -47,6 +47,7 @@ $on-laptop:        800px;
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import "syntax-highlighting";
+@import "blog";
 
 .text.container {
   margin: 2em 0;
