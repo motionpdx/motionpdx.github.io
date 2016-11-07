@@ -69,6 +69,9 @@ end
 This screen simply sets the title in the navigation bar to display "Calagator". We'll add more to this later. However, we have not yet told our App Delegate/Main Activity that we want to display this screen. To do this, first update your `app/ios/app_delegate.rb` to the following:
 
 {% highlight ruby %}
+def iOS?; true; end
+def android?; false; end
+
 class AppDelegate
   attr_accessor :window # required by UI::Application
 
@@ -81,11 +84,14 @@ class AppDelegate
 end
 {% endhighlight %}
 
-The code initializes a Flow `UI::Application`, with a navigation bar, with our new `EventsScreen` as the root.
+The code initializes a Flow `UI::Application`, with a navigation bar, with our new `EventsScreen` as the root. Note the two helper methods defined at the top. Those will be useful later in this tutorial.
 
 Now update your `app/android/main_activity.rb` to the following:
 
 {% highlight ruby %}
+def iOS?; false; end
+def android?; true; end
+
 class MainActivity < Android::Support::V7::App::AppCompatActivity
   def onCreate(savedInstanceState)
     super
@@ -167,13 +173,14 @@ class EventRow < UI::ListRow
 
   def add_title_label
     self.title_label = UI::Label.new
-    title_label.font = { name: "Helvetica", size: 18 }
+    font_name = iOS? ? "Helvetica" : "Roboto-Regular"
+    title_label.font = { name: font_name, size: 18 }
     add_child(title_label)
   end
 end
 {% endhighlight %}
 
-In this example, our `EventRow` has a single label for displaying the title of the event. When the `update` method is called, we expect to receive a hash of the event data so that we can set the text of our title label.
+In this example, our `EventRow` has a single label for displaying the title of the event. When the `update` method is called, we expect to receive a hash of the event data so that we can set the text of our title label. We also specify a platform-specific font name using our helper method we defined earlier.
 
 Now let's create a list that will display our new `EventRow`:
 
